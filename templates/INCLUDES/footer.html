@@ -1,0 +1,83 @@
+{% block footer %}
+
+<style>
+    
+#full-footer{
+    
+    position:fixed;
+    top:80%;
+    padding:50px;
+    background-color:rgba(10, 100, 120, 1.0);
+    
+    width:100%;
+    height:250px;
+    margin:-10px;
+    
+    }
+    
+#logo-blog-footer{
+    
+    height:30px;
+    width:30px;
+    
+    
+    
+    }
+    
+#footer-list{
+    
+    position:relative;
+    top:-60px;
+    
+    
+    
+    }
+    
+#footer-list  a{
+    
+    color:white;
+    font-size:20px;
+    
+    }
+    
+    
+</style>
+
+
+
+
+<div id="full-footer">
+
+<a href="{{url_for('home')}}">
+<img id="logo-blog-footer" src="{{url_for('static',filename='images/blog.png')}}">
+</a>
+<ul id="footer-list">
+    <li><a  href="{{url_for('contact')}}">Contact</a></li>
+    <li><a  href="{{url_for('blog_section.blogs', page=1)}}">Blogs</a></li>
+    <li><a  href="{{url_for('login')}}">Login</a></li>
+    <li><a  href="{{url_for('register')}}">Sign up</a></li>
+</ul>
+    
+<br><br>
+    <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock footer %}

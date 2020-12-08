@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{title.title()}} - My Awesome Blog</title>
+        {% else %}
+        <title>Default- My Awesome Blog</title>
+        {% endif %}
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <link rel="icon" height="16px" width="16px" type="image/png" href="{{url_for('static',filename='images/blog.png')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/layout.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    </head>
+    
+<style>
+#website-author{
+    
+    color:white;
+    font-size:20px;
+    position:relative;
+    left:2%;
+    top:-20px;
+}
+    
+#linked-in{
+    color:white;
+    }
+    
+</style>
+
+<body>
+    
+
+
+
+{% block base %}
+    
+    
+    <center>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    
+    {% if messages %}
+        
+    <ul id="flash-ul">
+    {% for msg in messages %}
+    
+        <li class="{{msg[0]}}">{{msg[1]}}<span onclick="DeleteFlash(this)" class="delete-flash" title="delete flash message"> X</span></li>
+        
+
+    {% endfor %}
+        
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    
+    </center>
+    
+    <div class="header">
+        <img id="header-image" src="{{url_for('static',filename='images/laptop-and-coffee.jpg')}}">
+<!--         <center> -->
+        <center>
+        <div id="website-author">
+            <a id="linked-in" href="https://www.linkedin.com/in/michael-russell-155953a6/" target="_blank">
+        By Michael S. Russell
+            </a>
+        </div>
+            </center>
+  <h2>{{header}}</h2>
+
+<!--         </center> -->
+</div>
+    
+    
+{% if current_user.is_authenticated %}
+    
+      <div class="topnav" id="myTopnav">
+        
+        <a class="navbar-a" href="{{url_for('home')}}">
+            <img id="logo-image" src="{{url_for('static',filename='images/blog-logo.png')}}"></a>
+        <a class="navbar-a" href="{{url_for('profile', username=current_user.username, user_id=current_user.id)}}">{{current_user.username.title()}}</a>
+          <a class="navbar-a" href="{{url_for('blog_section.blogs', page=1)}}">Blog</a>
+        <a class="navbar-a" href="{{url_for('contact')}}">Contact</a>
+        <a class="navbar-a" href="{{url_for('logout')}}">Logout</a>
+          
+          <a class="navbar-a" id="bell"  href="#" onclick="ViewNotify(this)">
+              <span id="bell-count"></span>
+              <i   class="fa fa-bell"></i>
+
+
+          </a>
+          
+                <div id="notification-id" class="notification-container-list">
+                <span id="notification-banner">Notifications</span><br>
+                <hr>
+                <div id="notify-div"></div>
+
+
+                </div>
+          
+
+    
+          
+          <a class="navbar-a" href="#" id="icon" onclick="ToggleMenu()">&#9776;</a>
+    </div>
+
+<div id="navbar-border"></div>
+    
+{% else %}
+    
+    <div class="topnav" id="myTopnav">
+        
+        <a class="navbar-a" href="{{url_for('home')}}">
+            <img id="logo-image" src="{{url_for('static',filename='images/blog-logo.png')}}"></a>
+        <a class="navbar-a" href="{{url_for('register')}}">Sign up</a>
+        <a class="navbar-a" href="{{url_for('login')}}">Login</a>
+         <a class="navbar-a" href="{{url_for('blog_section.blogs', page=1)}}">Blog</a>
+        <a class="navbar-a" href="{{url_for('contact')}}">Contact</a>
+        <a class="navbar-a" href="#" id="icon" onclick="ToggleMenu()">&#9776;</a>
+
+    </div>
+
+    <div id="navbar-border"></div>
+    
+    
+    
+    
+    
+{% endif %}
+
+
+{% endblock base %}
+    
+    
+{% if current_user.is_authenticated %}
+    
+    
+<script type="text/javascript">
+    
+
+var notifyDiv = document.getElementById("notify-div");
+    
+var token = {{csrf_token()|tojson}};
+    
+var notifyContainer = document.getElementById("notification-id");
+var notifyContainerList = document.getElementsByClassName("notification-container-list")[0];
+var notifyContainerListRelative = document.getElementsByClassName("notification-container-list-relative")[0];
+    
+var bellCount = 0;
+var bellSpan = document.getElementById("bell-count");
+    
+    $.getScript("/static/js/notify.js", function(){
+
+    });
+    
+</script>
+{% endif %}
+    
+    
+
+
+<script type="text/javascript">
+var notifyContainer = document.getElementById("notification-id");
+    
+var checkFlash;
+var headerImage = document.getElementById("header-image");
+    
+var flash = document.getElementById("flash-ul");
+    
+console.log(flash);
+    
+if(flash != null){
+    
+    
+    
+checkFlash = flash.children[0].className;
+    console.log(checkFlash);
+    
+    if(checkFlash == "message"){
+    
+    headerImage.style.top = "40px";
+    
+        
+    }
+
+ 
+
+}
+    
+
+function DeleteFlash(e){
+    
+    
+    
+    console.log(e);
+    if(checkFlash != null){
+    headerImage.style.top = "0px";
+        
+    }
+    
+    flash.style.display = "none";
+    
+    
+    
+    
+};
+    
+    
+
+    
+    
+    
+    
+function ToggleMenu(){
+    
+    console.log("Toggle menu!");
+    
+    var menu = document.getElementById("myTopnav");
+
+   if(menu.className == "topnav"){
+       
+       menu.className += " responsive";
+       
+       notifyContainer.className = "notification-container-list-relative";
+       
+   }else{
+       
+       menu.className = "topnav";
+       notifyContainer.className = "notification-container-list";
+   }
+    
+    
+};
+
+window.addEventListener("resize", function(){
+    var notifyContainer = document.getElementById("notification-id");
+    console.log(document.body.scrollWidth);
+    if(document.body.scrollWidth >= 700){
+        
+        
+        notifyContainer.className = "notification-container-list";
+    }
+    else{
+        //notifyContainer.className == "notification-container-list" &&s
+        if( document.body.scrollWidth < 700){
+            
+            notifyContainer.className = "notification-container-list-relative";
+        
+            
+        }
+        
+        
+    }
+        
+});
+    
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("myTopnav");
+var sticky = navbar.offsetTop;
+console.log("Sticky", sticky);
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+</script>
+
+</body>
+</html>

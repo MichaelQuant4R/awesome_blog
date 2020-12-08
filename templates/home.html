@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+
+
+<style>
+    
+
+    
+#blog-container-list{
+    
+    position:relative;
+    left:2%;
+    top:-50px;
+    
+ 
+    }
+    
+.blog-container{
+    
+    color:white;
+    font-size:22px;
+    background-color:rgba(100, 120, 200, 0.9);
+    border-radius:5px;
+    
+    border:2px solid lightblue;
+    max-width:60%;
+    padding:3px;
+    
+    }
+    
+#author-image{
+    
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    border:2px solid SkyBlue;
+    
+    }
+    
+#author-info > .author-details{
+    
+    color:white;
+    font-style:italic;
+    display:inline-block;
+    
+    }
+    
+.blog-title{
+    font-size:24px;
+    font-style:italic;
+    font-weight:bold;
+    color:black;
+    }
+    
+.blog-timestamp, .blog-author {
+    
+    font-size:16px;
+    }
+    
+    
+.comment-count{
+    
+    font-size:17px;
+    }
+
+    
+.fa-comments{
+    
+    position:relative;
+    left:2.5px;
+    }
+    
+    
+#blog-default{
+    
+    min-width:20%;
+    height:100px;
+    
+    }
+    
+
+    
+h1{
+    position:relative;
+    top:-30px;
+    }
+
+</style>
+
+
+<br>
+
+<h1>Top 5 Most Recent Blogs</h1><br>
+<div id="blog-container-list">
+{% for blog in blogs %}
+
+
+<div class="blog-container">
+       <a href="{{url_for('blog_section.one_blog', blog_id=blog.id, blog_title = blog.title)}}">
+    <span class="blog-title">{{blog.title}}</span>
+    
+        <br>
+    <img  id="blog-default" src="{{url_for('static',filename='images/blog-default.jpg')}}"><br>
+    </a>
+ 
+    <span class="blog-timestamp">Posted: {{blog.timestamp|read_datetime}}</span><br>
+    <div id="author-info">
+        <a class="author-details"  href="{{url_for('profile',username=blog.user.username, user_id = blog.user.id)}}">
+
+        <img  class="author-details" id="author-image" src="{{blog.user.get_image()}}"><br>
+            <span class="blog-author">Author: {{blog.user.username.title()}}</span><br>
+
+
+        </a>
+        
+
+        
+        
+        <span class="comment-count"><i class="fa fa-comments"></i> Comments: {{blog.count_comments()}}</span>
+    </div>
+</div><br>
+
+
+
+{% endfor %}
+</div>
+
+
+<script>
+
+
+
+
+</script>
+
+
+{% include "INCLUDES/footer.html" %}
+{% block footer %}{% endblock footer %}
+
+
+
+<script>
+
+    
+var footer = document.getElementById("full-footer");
+    
+footer.style.marginTop = "45px";
+footer.style.position = "relative";
+footer.style.bottom = "85%";
+
+    
+    
+
+
+
+</script>
+
+
+
+{% endblock base %}

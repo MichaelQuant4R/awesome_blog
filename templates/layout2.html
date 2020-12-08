@@ -1,0 +1,174 @@
+<style>
+    
+#bell{
+    
+    float:right;
+    position:relative;
+    right:10px;
+    }
+    
+#bell:hover{
+    background-color:transparent;
+    }
+    
+#notification-container-list{
+    
+    background-color:#f3f3f3f3;
+    padding:10px;
+    width:320px;
+    min-height:50%;
+    position:absolute;
+    bottom:30%;
+    left:0%;
+    z-index:1000;
+    opacity:1; 
+    }
+    
+#notification-title{
+    
+    color:black;
+    font-size:22px;
+    }
+    
+.user-info{
+    color:black;
+    }
+    
+.notify-user-image{
+    
+    border-radius:50%;
+    border:1px solid SkyBlue;
+    height:40px;
+    width:40px;
+    
+    }
+    
+.fa-comment{
+    color:DodgerBlue;
+    }
+    
+    
+.read-more{
+    
+    color:DodgerBlue;
+    font-size:20px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+{% set text = "Quaerat non dolorem aliquam sit neque numquam. Amet quaerat quisquam adipisci quiquia dolore magnam consectetur. Voluptatem etincidunt ut magnam. Ut non modi labore aliquam eius tempora quaerat. Est dolor porro sed dolore magnam dolor. Aliquam est voluptatem eius ut quiquia non quisquam. Dolore amet voluptatem eius ipsum ipsum modi quaerat. Ipsum neque consectetur quaerat. Est modi etincidunt est adipisci velit. Voluptatem ipsum quiquia non." %}
+          
+          {% set text2 = 'Modi magnam dolore sed magnam. Labore sed dolor est. Neque etincidunt ut velit ipsum ut. Modi numquam non sit. Modi velit tempora non voluptatem amet etincidunt.' %}
+          
+                <div id="notification-container-list">
+                    <span id="notification-title">Notifications</span>
+                    <hr>
+                    
+                    <div class="notification-container">
+                        <i class="fa fa-comment"></i>
+                        <div class="user-info">
+                            <a href="{{url_for('profile', username=current_user.username, user_id=current_user.id)}}">
+                            <img class="notify-user-image" src="{{current_user.get_image()}}">
+                            <div class="notify-username">{{current_user.username.title()}}
+                                
+                            </div>
+                                
+                            </a>
+                            <a href="{{url_for('blog_section.one_blog',blog_id=1, blog_title='TESTING 3333')}}">
+                                
+                                <div class="notify-text">
+                                    
+                                    {% set text_length = text|length %}
+                                    
+                                    {{text_length}}<br>
+                                    
+                                    {% if text_length >= 200 %}
+                                    
+                                    
+                                    <span class="text-partial">
+                                        {{text[:200]}}<br>
+                                        <span class="read-more">Read more...</span>
+                                        
+                                    </span>
+                                    
+                                    
+                                    {% else %}
+                                    
+                                    <span class="text-total">
+                                        {{text}}
+                                        
+                                    </span>
+                                    
+                                    {% endif %}
+
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        
+                        
+                                          <div class="notification-container">
+                        <i class="fa fa-comment"></i>
+                        <div class="user-info">
+                            <a href="{{url_for('profile', username=current_user.username, user_id=current_user.id)}}">
+                            <img class="notify-user-image" src="{{current_user.get_image()}}">
+                            <div class="notify-username">{{current_user.username.title()}}
+                                
+                            </div>
+                                
+                            </a>
+                            <a href="{{url_for('blog_section.one_blog',blog_id=1, blog_title='TESTING 3333')}}">
+                                
+                                <div class="notify-text">
+                                    
+                                    {% set text_length = text2|length %}
+                                    
+                                    {{text_length}}<br>
+                                    
+                                    {% if text_length >= 200 %}
+                                    
+                                    
+                                    <span class="text-partial">
+                                        {{text2[:200]}}<br>
+                                        <span class="read-more">Read more...</span>
+                                        
+                                    </span>
+                                    
+                                    
+                                    {% else %}
+                                    
+                                    <span class="text-total">
+                                        {{text2}}
+                                        
+                                    </span>
+                                    
+                                    {% endif %}
+
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        
+                        
+                        
+                    </div><br>
+                    
+                    
+                    
+            
+          
+          </div>
+          

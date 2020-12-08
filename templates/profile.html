@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+
+
+<style>
+
+
+#user-image{
+    
+    
+    border:2px solid white;
+    height:100px;
+    width:100px;
+    
+    
+    }
+
+#user-describe{
+    
+    
+    width:40%;
+    height:20vh;
+    resize:none;
+    
+    }
+    
+input[type=submit]{
+    
+    background-color:silver;
+    width:20%;
+    }
+
+    
+#user-container >  .user-info{
+    
+    display:inline;
+    }
+    
+.user-info:nth-child(2){
+    
+    position:relative;
+    left:2%;
+    }
+    
+#describe{
+    
+    width:50%;
+    border:2px solid skyblue;
+    border-radius:5px;
+    padding:5px;
+    text-align:left;
+    }
+
+.fa-user-check{
+    
+    color:rgba(10, 200, 30, 1.0);
+    font-weight:bold;
+    cursor:pointer;
+}
+.fa-times-circle{
+    
+    color:rgba(150, 10, 30, 1.0);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#user-status{
+    
+    position:relative;
+    top:-35px;
+    left:75px;
+    }
+    
+
+</style>
+
+
+<h4>{{title.title()}}</h4>
+<hr>
+<div id="user-container">
+
+<img  class="user-info" id="user-image" src="{{user.get_image()}}">
+    <span><i class="fa fa-check-o"></i></span>
+<h2 class="user-info" >{{user.username.title()}}</h2><br>
+    <div id="user-status">
+    {% if user.online %}
+    
+     <i class="fa fa-user-check" title="online"></i><br>
+    {% else %}
+     <i class="fa fa-times-circle" title="offline"></i>
+    
+    {% endif %}
+    </div>
+   
+     
+</div>
+
+{% if describe %}
+
+
+
+<div id="describe"><p>{{user.description}}</p></div>
+
+{% endif %}
+
+<center>
+    
+{% if user_load_image %}
+    
+
+<form method = "POST" enctype="multipart/form-data" action="/upload_user_image">
+    
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+   
+    
+    <input type="file" name="image" required><br>
+    
+    <input type="submit" value="Upload">
+    
+</form>
+    
+    <br>
+<form method = "POST"  action="/upload_user_text">
+    
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+   
+    
+    <textarea id="user-describe" placeholder="Say something about yourself..." name="description" maxlength="500" required></textarea><br>
+    
+    <input type="submit" value="Submit">
+    
+</form>
+{% endif %}
+
+</center>
+
+
+
+
+
+<script>
+
+
+
+
+</script>
+
+
+
+
+{% endblock base %}

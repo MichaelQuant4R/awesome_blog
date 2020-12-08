@@ -1,0 +1,283 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+
+<style>
+
+/* Add a gray background color with some padding */
+body {
+  
+/*   padding: 20px; */
+  background: rgba(10, 40, 80, 0.9);
+    color:black;
+}
+
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+     box-sizing: border-box;
+    font-family: Arial;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+     box-sizing: border-box;
+    font-family: Arial;
+}
+
+
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+     box-sizing: border-box;
+    font-family: Arial;
+}
+    
+    /* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+    
+    
+
+#author-image{
+    
+    border:2px solid SkyBlue;
+    height:50px;
+    width:50px;
+}
+    
+#blog-title{
+    
+    font-size:35px;
+    
+    text-align:center;
+    
+    }
+    
+#blog-date{
+    font-size:15px;
+   
+    }
+    
+    
+ .author-info{
+    
+    
+    display:inline;
+    
+    
+    }
+    
+    
+#blog-container{
+    
+    background-color:#999;
+    
+    max-width:80%;
+    }
+    
+#blog-text{
+    
+    color:black;
+    
+    }
+    
+    
+#blog-author{
+    
+    color:white;
+    font-size:15px;
+    }
+
+    /* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+/*   background: #ddd; */
+  margin-top: 20px;
+/*     box-sizing:border-box; */
+        background-color:rgba(10, 100, 120, 1.0);
+    
+    
+}
+    
+    
+    
+#logo-blog-footer{
+    
+    height:30px;
+    width:30px;
+    float:left;
+    
+    
+    
+    }
+
+#footer-list  a{
+    
+    color:white;
+    font-size:20px;
+    float:left;
+    margin:5px;
+    
+    } 
+     
+    
+
+</style>
+
+
+<br>
+
+<div id="author-container">
+    <div id="blog-title">{{blog.title}}</div>
+    
+    
+    <div id="author-details">
+        <a href="{{url_for('profile', username=blog.user.username, user_id=blog.user.id)}}">
+         <img class="author-info"  id="author-image" src="{{blog.user.get_image()}}">
+    <div  class="author-info" id="blog-author">Author: {{blog.user.username.title()}}</div>
+         </a>
+        
+        <div class="author-info" id="blog-date">Posted: {{blog.timestamp|read_datetime}}</div>
+        
+       
+    </div>
+   
+    <hr>
+
+
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+     
+        
+        {{blog_text|safe}}
+    </div>
+    <div class="card">
+      
+        {{blog_text|safe}}
+    </div>
+  </div>
+  <div class="rightcolumn">
+   
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div>
+    </div>
+
+
+   
+  </div>
+</div>
+
+
+
+
+ <div class="footer">
+ <div id="full-footer">
+
+<a href="{{url_for('home')}}">
+<img id="logo-blog-footer" src="{{url_for('static',filename='images/blog.png')}}">
+</a>
+<ul id="footer-list">
+    <li><a  href="{{url_for('contact')}}">Contact</a></li>
+    <li><a  href="{{url_for('blog_section.blogs')}}">Blogs</a></li>
+    <li><a  href="{{url_for('login')}}">Login</a></li>
+    <li><a  href="{{url_for('register')}}">Sign up</a></li>
+</ul>
+    
+<br><br><br>
+    <hr>
+
+</div>
+
+
+     
+<script type="text/javascript">
+
+
+$.get("/comment_data").then(function(data){
+    
+    
+    
+    
+    
+    console.log(data["comments"]);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+    
+{% endblock base %}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

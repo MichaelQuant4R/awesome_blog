@@ -1,0 +1,337 @@
+.edit-blog, .delete-blog{
+    
+    padding:2px;
+    color:white;
+    background-color:DodgerBlue;
+    border-radius:5px;
+    border:3px solid SeaGreen;
+    width:15%;
+    font-size:12px;
+    cursor:pointer;
+   
+}
+
+.edit-blog > a{
+    color:white;
+    font-size:12px;
+}
+
+
+
+
+#blog-title{
+    font-size:40px;
+    font-weight:bold;
+    color:white;
+    text-transform:uppercase;
+}
+
+
+
+#comment-card{
+    
+    color:black;
+  
+}
+
+
+
+
+
+
+
+#comment{
+    
+    min-width:55%;
+    height:120px;
+    
+   
+    
+}
+    
+img{
+    
+    
+    max-width:90%;
+    }
+
+
+.comment-text, .reply-text{
+    
+    font-size:18px;
+    
+    
+}
+
+
+    
+    
+#comment-id{
+    
+    position:relative;
+    left:30%;
+    }
+    
+    
+.user-image{
+/*     border-radius:50%; */
+    height:50px;
+    width:50px;
+    border:2px solid white;
+    }
+    
+.timestamp-comment{
+/*     color:white; */
+   float:right;
+    font-size:12px;
+    }
+    
+.timestamp-reply{
+    color:white;
+   float:right;
+    font-size:12px;
+    }
+    
+    
+.comment-container{
+    
+    border:2px solid SkyBlue;
+    border-radius:5px;
+    max-width:40%;
+    overflow-y:hidden;
+    font-size:20px;
+    
+    }
+    
+    
+.reply-container{
+    
+     margin-top:10px;
+    max-width:95%;
+    overflow-x:hidden;
+    color:black;
+    font-size:20px;
+    position:relative;
+    left:5%;
+    overflow-y:hidden;
+    
+    }
+    
+    
+@media screen and (max-width:500px){
+    
+    
+    .comment-container{
+    max-width:70%;
+        transition:0.3s ease-in;
+        -webkit-transition:0.3s ease-in;
+    
+    }
+    
+    
+#comment-id{
+    
+    left:15%;
+    transition:0.3s ease-in;
+        -webkit-transition:0.3s ease-in;
+    
+    }
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+#author-name{
+    color:white;
+    }
+    
+.username{
+    color:black;
+    }
+    
+    
+#toggle-comments{
+    color:lightgray;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    }
+    
+    
+    
+.toggle-replies{
+    
+    color:DodgerBlue;
+    font-size:16px;
+    
+    cursor:pointer;
+    -webkit-transition:0.3s ease-out;
+    transition:0.3s ease-out;
+    }
+    
+    
+    
+.toggle-replies:hover{
+    font-weight:bold;
+    
+    -webkit-transition:0.3s ease-in;
+    transition:0.3s ease-in;
+    }
+    
+    
+    
+.textarea-reply{
+    
+    resize:none;
+  
+    width:98%;
+        
+    height:15vh;
+ }
+    
+    
+    
+
+    
+    
+    .textarea-comment{
+    
+    resize:none;
+    width:98%;
+    height:15vh;
+ }
+    
+    
+    
+
+    
+.submit-textarea, .cancel-edit{
+    
+    border-radius:3px;
+    border:1px solid DodgerBlue;
+    font-size:15px;
+    cursor:pointer;
+     transition:0.3s ease-in;
+    -webkit-transition:0.3s ease-in;
+    
+    
+    }
+    
+.submit-textarea:hover{
+    
+     transition:0.3s ease-out;
+    -webkit-transition:0.3s ease-out;
+    font-weight:bold;
+    background-color:SeaGreen;
+    color:white;
+    
+    
+    }
+    
+    
+.cancel-edit:hover{
+    
+     transition:0.3s ease-out;
+    -webkit-transition:0.3s ease-out;
+    font-weight:bold;
+    background-color:rgba(230, 10, 10, 0.9);
+    color:white;
+    
+    
+    }
+    
+    
+    
+    
+#comment-error{
+    
+    display:none;
+    
+    background-color:rgba(200, 50, 10, 0.9);
+    width:28%;
+    border:1px solid darkblue;
+    border-radius:3px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    padding:4px;
+    position:relative;
+    left:1%;
+    top:1px;
+    
+    }
+    
+    
+#delete-error{
+    
+    color:pink;
+    font-weight:bold;
+    font-size:17px;
+    position:relative;
+    left:10px;
+    cursor:pointer;
+
+    }
+
+
+
+.interact-dots .interact-tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+
+  /* Position the tooltip */
+  position: absolute;
+    right:5%;
+  z-index: 1000;
+}
+
+.interact-dots:hover .interact-tooltip {
+  visibility: visible;
+    z-index:1000;
+}
+    
+.interact-dots{
+    
+    float:right;
+    position:relative;
+    right:5px;
+    bottom:5px;
+    color:lightgray;
+    font-weight:bold;
+    
+
+    }
+    
+.edit-text, .delete-text, .report-text{
+    
+    width:100%;
+    z-index:1000;
+    cursor:pointer;
+    color:white;
+    border-radius:5px;
+    border:none;
+    background-color:DodgerBlue;
+    font-size:18px;
+    font-weight:bold;
+/*     transition:0.3s ease-out;
+    -webkit-transition:0.3s ease-out; */
+    }
+    
+    
+.edit-text:hover, .delete-text:hover, .report-text:hover{
+    transition:0.3s ease-out;
+    -webkit-transition:0.3s ease-out;
+    background-color:rgba(230, 10, 10, 1.0);
+    
+    
+    }
+    

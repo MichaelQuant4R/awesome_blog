@@ -1,0 +1,29 @@
+{% block comments %}
+
+<script type="text/javascript">
+        
+var currentUserID = {{current_user_id|tojson}};
+    
+var blogID = {{blog.id|tojson}};
+    
+var authorID = {{blog.user_id|tojson}};
+    
+
+
+
+$.get("/comment_data").then(function(data){
+    
+    console.log(currentUserID, blogID, authorID);
+    
+    
+    
+    
+    console.log(data["comments"]);
+    
+  
+});
+
+</script>
+
+
+{% endblock comments %}

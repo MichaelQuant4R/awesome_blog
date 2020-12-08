@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+<style>
+    
+    
+    
+#author-container{
+    
+    position:relative;
+    top:-15px;
+    
+    
+    
+}
+    
+    
+
+#author-image{
+    
+    border:2px solid SkyBlue;
+    height:50px;
+    width:50px;
+}
+    
+#blog-title{
+    
+    font-size:35px;
+    
+    text-align:center;
+    
+    }
+    
+#blog-date{
+    font-size:15px;
+   
+    }
+    
+    
+/* #author-details > .author-info{ */
+    
+.author-info{
+    
+    
+    display:inline;
+    margin-right:10px;
+    
+    
+    }
+    
+    
+#blog-container{
+    
+    background-color:#999;
+    
+    max-width:80%;
+    }
+    
+#blog-text{
+    
+    color:black;
+    
+    }
+    
+    
+#blog-author{
+    
+    color:white;
+    font-size:15px;
+    }
+
+    
+.right-column-area{
+    
+    width:15%;
+    
+    min-height:30%;
+    background-color:rgba(10, 100, 80, 1.0);
+    padding:5px;
+    float:right;
+    position:absolute;
+    top:385px;
+    left:80%;
+    margin-left:50px;
+    z-index:-1;
+    font-size:17px;
+}
+    
+#comment-container{
+    background-color:#999;
+    color:black;
+    max-width:80%;
+}
+    
+@media screen and (max-width:1200px){
+    
+    
+    
+    .right-column-area{
+        
+        
+        width:60%;
+        position:relative;
+        left:10%;
+        top:40%;
+        z-index:1;
+        height:360px;
+
+    }
+    
+    
+    #comment-container{
+        
+        position:relative;
+        top:50%;
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+}
+    
+</style>
+
+<br>
+
+<div id="author-container">
+    <div id="blog-title">{{blog.title}}</div>
+    
+    
+    <div id="author-details">
+        <a href="{{url_for('profile', username=blog.user.username, user_id=blog.user.id)}}">
+         <img class="author-info"  id="author-image" src="{{blog.user.get_image()}}">
+    <div  class="author-info" id="blog-author">Author: {{blog.user.username.title()}}</div>
+         </a>
+        
+        <div class="author-info" id="blog-date">Posted: {{blog.timestamp|read_datetime}}</div>
+        
+       
+    </div>
+   
+    <hr>
+
+
+</div>
+
+<div id="blog-container">
+    <div id="blog-text">{{blog_text|safe}}</div>
+</div>
+
+
+<hr>
+<div id="comment-container">
+    
+    <div id="comment-text">{{blog_text|safe}}</div>
+    
+    
+    
+</div>
+
+
+  <div class="right-column-area" id="right-column-one">
+        <center>
+    <h3>Recent blogs</h3>
+        <hr>
+    
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Blog Title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Another long Blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing And a final long blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+              <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Blog Title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Another long Blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+   
+        
+    
+    
+    </center>
+    
+    
+    
+    </div>  
+
+
+
+
+
+
+
+
+
+{% include "INCLUDES/footer.html" %}
+{% block footer %}{% endblock footer %}
+
+
+
+<style>
+    #full-footer{
+    
+    position:relative;
+    bottom:80%;
+    
+/*     top:0%; */
+        margin-top:200px;
+    
+    
+    
+    
+    
+    
+    
+    }
+
+    
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock base %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

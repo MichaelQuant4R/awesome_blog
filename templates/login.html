@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+
+
+<style>
+    
+    
+    
+    
+    
+    
+    
+
+#container-form{
+    
+    width:40%;
+    background-color:rgba(10, 20, 40, 1.0);
+    border-radius:5px;
+    border:2px solid DodgerBlue;
+    padding:5px;
+    transition:0.3s ease-out;
+    height:50%;
+    }
+
+#logo-form{
+    
+    width:70px;
+    height:70px;
+    
+    }
+    
+#toggle-password{
+    
+    cursor:pointer;
+    font-style:italic;
+    
+    
+    }
+    
+    
+@media screen and (max-width:850px){
+    
+        #container-form{
+            width:80%;
+            transition:0.3s ease-in;
+            background-color:SeaGreen;
+        }
+    
+    
+    input{
+        
+        
+        width:80%;
+    }
+
+    
+}
+    
+.questions{
+    
+    color:SkyBlue;
+    font-size:15px;
+    
+    
+    }
+
+.questions > a{
+    
+    color:white;
+    font-weight:bold;
+    }
+
+
+</style>
+
+
+<h4>{{title.title()}}</h4>
+<hr>
+
+<center>
+    <div id="container-form">
+        <a href="{{url_for('home')}}">
+    <img id="logo-form" src="{{url_for('static',filename='images/blog.png')}}">
+        </a>
+    <form method = "POST">
+    
+    {{form.hidden_tag()}}
+
+    {{form.email.label}}<br>
+    {{form.email()}}<br>
+    <span class="validation-error">{{"".join(form.email.errors)}}</span><br>
+
+
+    {{form.password.label}}<br>
+    {{form.password()}}<br>
+    <span class="validation-error">{{"".join(form.password.errors)}}</span><br>
+
+    {{form.submit()}}<br>
+        
+        <span id="toggle-password" onclick="TogglePassword(this)">Show Passwords</span>
+        
+    
+    
+        </form>
+        <span class="questions">Not sign up yet? <a href="{{url_for('register')}}">Sign up here</a></span><br>
+        <span class="questions">Forgot your password? <a href="{{url_for('request_token')}}">Click to reset password</a></span>
+    </div>
+    
+</center>
+
+
+
+{% include "INCLUDES/footer.html" %}
+{% block footer %}{% endblock footer %}
+
+
+
+
+
+<script>
+    
+var pword = document.getElementById("password");
+
+
+var togglePassword = document.getElementById("toggle-password");
+    
+function TogglePassword(e){
+    
+    
+    console.log(e);
+    
+    if(pword.type != "text"){
+    
+    
+        pword.type = "text";
+        togglePassword.innerText = "Hide Passwords";
+        
+    
+    
+    }else{
+        
+        
+    
+        pword.type = "password";
+        togglePassword.innerText = "Show Passwords";
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+};
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+</script>
+
+
+
+
+{% endblock base %}

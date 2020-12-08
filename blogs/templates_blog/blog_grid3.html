@@ -1,0 +1,279 @@
+{% extends "layout.html" %}
+{% block base %}
+{{super()}}
+
+
+<style>
+    
+    
+ 
+
+    
+
+    
+    
+#grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+    color:black;
+    margin-bottom:20%;
+}
+    
+    
+    
+    
+
+    
+    
+    
+@media screen and (max-width: 800px){
+    
+#grid-container{
+    
+    grid-template-columns:auto;
+    }
+    
+#item3{
+    /*      row, column, span rows, span columns */
+
+    grid-area: 3/ 1/ span 3/ span 1;
+    background-color:pink;
+    color:white;
+ 
+    }
+}
+     
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+#grid-container > .items {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+/*   font-size: 30px; */
+    
+}
+
+#grid-container > #item1 {
+/*   grid-area: 2 / 1 / span 2 / span 3; */
+    grid-area: 1/ 1/ span 5 / span 2;
+/*     start row then column, span rows then columns */
+    font-size:20px;
+    text-align:left;
+    padding:5px;
+}
+    
+    
+#item2{
+    grid-area: 6/ 1/ span 5/ span 2;
+    
+    }
+    
+
+    
+#item3{
+    
+    grid-area: 1/ 3/ span 5/ span 1;
+    
+    min-height:70%;
+    
+}
+
+#author-image{
+    
+    height:50px;
+    width:50px;
+    border:2px solid SkyBlue;
+    
+}
+    
+#author-info > .author-details{
+    
+    display:inline;
+    color:#f2f2f2f2;
+    font-size:15px;
+    }
+    
+#author-info{
+    font-size:20px;}
+    
+#blog-title{
+    
+    
+    font-size:37px;
+    }
+    
+ #blog-author{
+    font-size:15px;
+    color:#f2f2f2f2;
+    
+    }
+
+    
+#author-container{
+    
+    
+    position:relative;
+    top:-20px;
+   z-index:-1;
+    
+    }
+
+#blog-timestamp{
+    
+    position:relative;
+    left:10px;
+    
+    }
+</style>
+<h1>{{blog.title}}</h1>
+<div id="author-container">
+
+
+
+<a id="author-info" href="{{url_for('profile', username= blog.user.username, user_id = blog.user.id)}}">
+    <img class="author-details" id="author-image" src="{{blog.user.get_image()}}">
+    <h4 class="author-details">Author: {{blog.user.username.title()}}</h4>
+    <h4 class="author-details" id="blog-timestamp">Date: {{blog.timestamp|read_datetime}}</h4>
+
+    </a>
+</div>
+<!-- <hr> -->
+
+
+<div id="grid-container">
+  <div class="items" id="item1">
+          
+  
+    {{blog_text|safe}}
+
+    
+    
+    
+    </div>
+  <div class="items" id="item2">
+      <h4>Comments</h4>
+      
+      {{blog_text|safe}}</div>
+  <div class="items" id="item3">
+        <center>
+    <h3>Recent blogs</h3>
+        <hr>
+    
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Blog Title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Another long Blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing And a final long blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+              <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Blog Title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing Another long Blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        <div class="recent-blogs">
+            <span class="recent-blog-title">Testing And a final long blog title</span><br>
+            <span>Posted: 26/11/2020</span>
+        </div><br>
+        
+        
+        
+        
+    
+    
+    </center>
+    
+    
+    
+    </div>  
+
+ 
+</div>
+
+
+{% include "INCLUDES/footer.html" %}
+{% block footer %}{% endblock footer %}
+
+<style>
+#full-footer{
+    
+    
+    margin-bottom:-100px;
+    position:relative;
+    top:20%:
+    
+    }
+    
+    
+</style>
+
+
+<script>
+
+</script>
+
+
+
+
+{% endblock base %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,400 @@
+
+ 
+
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+
+
+<style>
+    
+
+h4{
+    color:black;
+}
+
+    
+#blog-container{
+    
+    width:100%;
+    height:1000px;
+    background-color:SkyBlue;
+    
+}
+
+
+    
+    body{
+        
+        overflow-x:hidden;
+        background-color:SkyBlue;
+    }
+    
+input[type=submit]{
+    
+    
+    width:40%;
+    padding:2px;
+    color:DodgerBlue;
+    font-weight:bold;
+    font-size:22px;
+    }
+    
+input[type=text]{
+    
+    width:80%;
+    font-weight:bold;
+    font-size:22px;
+    
+    
+    }
+    
+    
+label{
+    
+    font-size:25px;
+    }
+    
+    
+    
+.success, .danger, .warning, .info{
+    color:white;
+    font-size:22px;
+    padding:12px 180px 0px 30px;
+    width:100%;
+    top:15px;
+    margin:-10px;
+    position:relative;
+    right:18px;
+/*     margin-bottom:5px; */
+    font-weight:bold;
+    z-index:20;
+ 
+    }
+    
+
+    
+.success{
+    background-color:SeaGreen;
+    }
+    
+.danger{
+    background-color:rgba(230, 100, 10, 1.0);
+    }
+    
+.warning{
+    background-color:rgba(240, 200, 10, 1.0);
+    }
+    
+.info{
+    background-color:SkyBlue;;
+    }
+    
+#flash-ul > li{
+    list-style:none;
+    }
+    
+.delete-flash{
+    
+    color:darkred;
+    font-weight:bold;
+    font-size:20px;
+    cursor:pointer;
+    }
+    
+</style>
+    
+
+<body>
+    
+        <center>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    
+    {% if messages %}
+        
+    <ul id="flash-ul">
+    {% for msg in messages %}
+    
+        <li class="{{msg[0]}}">{{msg[1]}}<span onclick="DeleteFlash(this)" class="delete-flash" title="delete flash message"> X</span></li>
+        
+    
+    
+    
+    
+    
+    {% endfor %}
+        
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    
+    </center>
+    
+
+<nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#admin-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <a class="navbar-brand" href="/admin">Awesome Blog</a>
+          
+        </div>
+        <!-- navbar content -->
+        <div class="collapse navbar-collapse" id="admin-navbar-collapse">
+          
+          <ul class="nav navbar-nav">
+            
+  
+        <li class="active">
+          <a href="/admin/">
+  
+  
+    <i class="glyphicon glyphicon-home"></i>
+  
+Home</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+            Test<i class="glyphicon glyphicon-chevron-down small"></i></a>
+          <ul class="dropdown-menu">
+              
+              <li>
+              <a href="/admin/test1/">
+              Hello 1</a>
+              </li>
+              
+              <li>
+              <a href="/admin/test2/">
+              Hello 2</a>
+              </li>
+              
+              <li>
+              <a href="/admin/test3/">
+              Hello 3</a>
+              </li>
+          </ul>
+        </li>
+      
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            
+            Blogs<i class="glyphicon glyphicon-chevron-down small"></i></a>
+          <ul class="dropdown-menu">
+              
+              <li>
+              <a href="/admin/blog/">
+              
+  
+  
+    <i class="glyphicon glyphicon glyphicon-comment"></i>
+  
+Blogs</a>
+              </li>
+              
+              <li>
+              <a href="/admin/blog_admin_view/">
+              
+  
+  
+    <i class="glyphicon glyphicon glyphicon-comments"></i>
+  
+Blog Admin</a>
+              </li>
+          </ul>
+        </li>
+      
+        <li>
+          <a href="/admin/user/">
+  
+  
+    <i class="glyphicon glyphicon glyphicon-user"></i>
+  
+User</a>
+        </li>
+        <li>
+          <a href="/admin/myadmin/">
+  
+  
+    <i class="glyphicon glyphicon glyphicon-file"></i>
+  
+Static Files</a>
+        </li>
+
+          </ul>
+          
+
+          
+          <ul class="nav navbar-nav navbar-right">
+            
+  
+  
+    
+    
+      <li>
+        <a href="/home">admin</a>
+      </li>
+    
+  
+    
+    
+      <li>
+        <a href="/logout">Logout</a>
+      </li>
+    
+  
+
+          </ul>
+          
+          
+          
+        </div>
+      </nav>
+<form method = "POST">
+
+    <center>
+<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+        <label for="title">Blog Title</label><br>
+<input type="text" id="blog-title" name="title" maxlength = "100" required placeholder="Enter a unique title..."><br><br>
+ </center>
+<textarea id="blog-textarea" name="blog-textarea" placeholder="Say something interesting..." required></textarea>
+    
+    <center>
+<input type="submit" value="Post">
+
+    </center>
+
+
+
+
+
+</form>
+
+<script type="text/javascript">
+
+        
+var flash = document.getElementById("flash-ul");
+    
+
+
+$(document).ready(function() {
+  $('#blog-textarea').summernote({
+      
+      height:"700",
+      
+  });
+});
+    
+
+    
+    
+
+function DeleteFlash(e){
+    
+    
+    
+    console.log(e);
+
+    
+    flash.style.display = "none";
+    
+    
+    
+    
+};
+    
+    
+    
+    
+var title = {{blog_title|tojson}};
+    
+var data = {{data|tojson}};
+    
+console.log(title);
+    
+console.log(data);
+    
+    
+// function loadEditor(){
+
+
+console.log(blogTitle);
+    
+var iframe = document.getElementById("blog-container");
+// var blogTitle = iframe.contentDocument.document.getElementById
+    
+var blogTitle = document.getElementById("blog-title");
+console.log(blogTitle);
+// console.log(iframe);
+    
+blogTitle.value = title;
+    
+    
+var blogTextArea = document.getElementById("blog-textarea");
+blogTextArea.innerHTML = data;
+
+    
+
+  
+// };
+
+    
+    
+</script>
+    
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
