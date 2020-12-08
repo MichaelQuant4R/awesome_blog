@@ -44,11 +44,13 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 
-file_path = os.path.abspath(os.getcwd()) + "\database.db"
+# file_path = os.path.abspath(os.getcwd()) + "\database.db"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + file_path
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + file_path
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://qydsslidyyppsi:8cb1a4405fc248fd3e247e0009c1976c4132f91b4467246dbe29c5931b9cd539@ec2-52-208-138-246.eu-west-1.compute.amazonaws.com:5432/dcs0iiilrb05ov"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "my random secret key!!!!!"
+app.config["SECRET_KEY"] = 'I\x94\x90\xdf\x15\x88\x1e\xb2\xa2\xa9-k\x93\xdf\\\xaa\xa5\xa2\xedQ\xc08\xaa""Q\xc0\xd0r\x15\x1c\x8c\x80\xc5Ik$\x10\xf3\x06'
 
 db = SQLAlchemy(app)
 
