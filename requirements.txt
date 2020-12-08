@@ -17,4 +17,5 @@ gunicorn==19.9.0
 psycopg2==2.8.4
 email-validator==1.1.1
 Flask_Mail==0.9.1
+lorem==0.1.1
 
