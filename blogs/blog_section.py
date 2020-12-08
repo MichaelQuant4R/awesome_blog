@@ -18,7 +18,7 @@ app_blog = Blueprint("blog_section", __name__, url_prefix = "/awesome_blog",
 
 
 @app_blog.route("/blogs/<int:page>")
-def blogs(page):
+def blogs(page=1):
     
     blogs = Blog.query.all()
     
