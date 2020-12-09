@@ -18,7 +18,7 @@ app_blog = Blueprint("blog_section", __name__, url_prefix = "/awesome_blog",
 
 
 @app_blog.route("/blogs/<int:page>")
-def blogs(page):
+def blogs(page=1):
     
     blogs = Blog.query.all()
     
@@ -27,7 +27,7 @@ def blogs(page):
     if blogs != []:
         
         blogs = Blog.query.paginate(page, 4).items[::-1]
-        paginate = Blog.query.paginate(3, 4)
+        paginate = Blog.query.paginate(page, 4)
 
 
         pages = list(paginate.iter_pages())

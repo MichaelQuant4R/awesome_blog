@@ -238,6 +238,29 @@ function ToggleMenu(){
     
 };
 
+
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("myTopnav");
+var sticky = navbar.offsetTop;
+console.log("Sticky", sticky);
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+</script>
+    
+    
+    
+{% if current_user.is_authenticated %}
+<script type="text/javascript">
 window.addEventListener("resize", function(){
     var notifyContainer = document.getElementById("notification-id");
     console.log(document.body.scrollWidth);
@@ -260,23 +283,26 @@ window.addEventListener("resize", function(){
         
 });
     
-
-window.onscroll = function() {myFunction()};
-
-var navbar = document.getElementById("myTopnav");
-var sticky = navbar.offsetTop;
-console.log("Sticky", sticky);
-
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-
-
-</script>
+    
+    
+    
+</script>  
+{% endif %}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 </body>
 </html>

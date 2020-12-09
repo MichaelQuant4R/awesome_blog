@@ -519,7 +519,7 @@ def internal_server_error(e):
 
 @app.errorhandler(403)
 def page_forbidden(e):
-    return render_template('page_forbidden.html', title = "page forbidden"), 403
+    return render_template('forbidden.html', title = "page forbidden"), 403
 
 
 
@@ -602,4 +602,4 @@ def test_layout():
 
 
 if __name__ == "__main__":
-    app.run(debug = False)
+    app.run(debug = True)
