@@ -26,7 +26,7 @@ gravatar = Gravatar(app,
                     default = "retro",
                     force_default = False,
                     force_lower = False,
-                    use_ssl= False,
+                    use_ssl= True,
                     base_url=None)
 
 mail_settings = {
