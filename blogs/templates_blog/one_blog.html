@@ -130,10 +130,10 @@ var blogID = {{blog_id|tojson}};
     
 var authorID = {{blog.user_id|tojson}};
     
-var comments = {{comment_list|tojson}};
+var comm = {{comment_list|tojson}};
 
-
-console.log(comments);
+console.log("COMMENTS!!!");
+console.log(comm);
     
 $.getScript("/static/js/comments.js", function(){
 

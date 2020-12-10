@@ -64,7 +64,7 @@ def one_blog(blog_id, blog_title):
         return redirect(url_for("home"))
     
         
-    session["blog_id"].append(blog.id)
+    #session["blog_id"].append(blog.id)
     
     if current_user.is_anonymous:
         
@@ -88,21 +88,6 @@ def one_blog(blog_id, blog_title):
     
     blog_text = blog.data
     
-    #     text = lorem.text()
-    #     #text = lorem.text() + lorem.text() + lorem.text()
-
-    #     blog_text = "<p>"
-
-    #     for t in text.split(" "):
-
-    #         if "\n" in t:
-
-    #             blog_text += "</p>"
-
-    #         else:
-
-    #             blog_text += " "+ t
-
 
     comments = blog.comments.all()
     

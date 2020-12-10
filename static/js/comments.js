@@ -67,10 +67,10 @@ function DeleteBlog(e){
 
 
 
-$.get("/comment_data").then(function(data){
+// $.get("/comment_data").then(function(data){
 
     var repCount = 0;
-    var comm = data["comments"];
+//     var comm = data["comments"];
     
     for(var c = 0; c < comm.length; c++){
 
@@ -82,17 +82,17 @@ $.get("/comment_data").then(function(data){
     commentCount.innerText = comm.length + repCount;
     
     
-});
+// });
     
 
     
     
     
-$.get("/comment_data").then(function(data){
+// $.get("/comment_data").then(function(data){
 
-    var comm = data["comments"];
+//     var comm = data["comments"];
     
-    for(var i =0; i < comm.length; i++){
+for(var i =0; i < comm.length; i++){
 
         console.log(comm[i]);
         
@@ -352,7 +352,7 @@ for(var i =0; i < repList.length; i++){
 };
     
     
-});
+// });
     
     
     
