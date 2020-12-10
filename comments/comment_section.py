@@ -17,7 +17,7 @@ NOTIFY_BLOG_LIST_ID = []
 @app_comm.route("/comment_data", methods = ["GET", "POST"])
 def comment_data():
     
-    blog_id = current_app.config["blog_id"]
+    blog_id = current_app.config["blog_id"][-1]
     
     blog = Blog.query.filter_by(id = blog_id).first()
     
