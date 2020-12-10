@@ -1,19 +1,15 @@
 from flask import (Blueprint, render_template, url_for, redirect, flash, jsonify, request,
-                   current_app)
+                   current_app, session)
 
 ### LOCAL IMPORTS ########################################################
 from models import (db, app,  User, Blog, Comment, Reply, Notification, AdminRole)
 from flask_login import (login_required, current_user)
 import lorem
+from filters import read_datetime
 
 from flask_wtf import CSRFProtect
 
 csrf = CSRFProtect(app)
-
-# current_app.config["blog_id"] = []
-
-BLOG_LIST_ID = []
-
 
 
 app_blog = Blueprint("blog_section", __name__, url_prefix = "/awesome_blog",
@@ -55,13 +51,10 @@ def new_blog(username, user_id):
 @app_blog.route("/one_blog/<int:blog_id>/<string:blog_title>")
 def one_blog(blog_id, blog_title):
     
-    
     blog = Blog.query.filter_by(id = blog_id).first()
     
     visitor = True
     blog_author_edit = False
-    
-
     
     
     if blog is None:
@@ -70,12 +63,8 @@ def one_blog(blog_id, blog_title):
         flash("This blog does not exist or has been deleted!", "info")
         return redirect(url_for("home"))
     
-    
-    #     print(current_app.config)
-
-    #     current_app.config["blog_id"].append(blog.id)
-    
-    BLOG_LIST_ID.append(blog.id)
+        
+    session["blog_id"].append(blog.id)
     
     if current_user.is_anonymous:
         
@@ -115,39 +104,6 @@ def one_blog(blog_id, blog_title):
     #             blog_text += " "+ t
 
 
-
-    
-    
-    return render_template("one_blog.html", title = "one blog",
-                           blog = blog, 
-                           blog_id = blog_id,
-                           author = author,
-                           blog_text = blog_text,
-                           current_user_id = current_user_id,
-                           visitor = visitor,
-                           blog_author_edit = blog_author_edit)
-                           
-
-    
-    
-
-    
-    
-          
-
-@app_blog.route("/comment_data", methods = ["GET", "POST"])
-def comment_data():
-    
-    blog_id = BLOG_LIST_ID[-1]
-    
-    blog = Blog.query.filter_by(id = blog_id).first()
-    
-    if blog is None:
-        
-        
-        return jsonify({"comments": comment_list})
-    
-    
     comments = blog.comments.all()
     
     comment_list = []
@@ -192,10 +148,18 @@ def comment_data():
                         "username": user.username,
                         "timestamp": read_datetime(comm.timestamp),
                         "replies": []})
-            
-            
-    return jsonify({"comments": comment_list})
-
+    
+    
+    return render_template("one_blog.html", title = "one blog",
+                           blog = blog, 
+                           blog_id = blog_id,
+                           author = author,
+                           blog_text = blog_text,
+                           current_user_id = current_user_id,
+                           visitor = visitor,
+                           blog_author_edit = blog_author_edit,
+                           comment_list = comment_list)
+                           
 
 
 

@@ -21,6 +21,12 @@ app.register_blueprint(app_blog)
 app.register_blueprint(app_comm)
 app.register_blueprint(app_bell)
 
+@app.before_first_request
+def before_first_request_func():
+    print("This function will run once")
+
+    session["blog_id"] = []
+    
 
 @app.context_processor
 def inject_stage_and_region():

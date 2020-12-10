@@ -1,4 +1,4 @@
-from flask import (Blueprint, jsonify, request, flash, current_app)
+from flask import (Blueprint, jsonify, request, flash, current_app, session)
 from models import (db, csrf, User, Blog, Comment, Reply, AdminRole, Notification)
 from filters import read_datetime
 from flask_login import (current_user, login_required)
@@ -11,6 +11,73 @@ REPLY_LIST_ID = []
 BLOG_LIST_ID = []
 
 NOTIFY_BLOG_LIST_ID = []
+
+
+
+@app_comm.route("/comment_data", methods = ["GET", "POST"])
+def comment_data():
+    
+
+    
+    blog_id = session["blog_id"][-1]
+    
+
+    
+    blog = Blog.query.filter_by(id = blog_id).first()
+    
+    if blog is None:
+        
+        
+        return "no comments!"
+    
+    
+    comments = blog.comments.all()
+    
+    comment_list = []
+    for comm in comments[::-1]:
+        user = User.query.filter_by(id = comm.user_id).first()
+
+        replies = comm.replies.all()
+
+        if replies != []:
+
+            reply_list = []
+
+            for rep in replies:
+
+                reply_list.append({"reply": rep.reply,
+                                "id": rep.id,
+                                 "comment_id": comm.id,
+                                 "blog_id": comm.blog_id,
+                                "user_id": rep.user.id,
+                                   "image": rep.user.get_image(),
+                                "username": rep.user.username,
+                                "timestamp": read_datetime(rep.timestamp)})
+                
+            comment_list.append({"comment": comm.comment,
+                "id": comm.id,
+                 "blog_id": comm.blog_id,
+                "user_id": user.id,
+                 "image": user.get_image(),
+                "username": user.username,
+                "timestamp": read_datetime(comm.timestamp),
+                "replies": reply_list})
+
+        else:
+
+            user = User.query.filter_by(id = comm.user_id).first()
+
+            comment_list.append({"comment": comm.comment,
+                        "id": comm.id,
+                         "blog_id": comm.blog_id,
+                        "user_id": user.id,
+                                 "image": user.get_image(),
+                        "username": user.username,
+                        "timestamp": read_datetime(comm.timestamp),
+                        "replies": []})
+            
+            
+    return jsonify({"comments": comment_list})
 
 
 
