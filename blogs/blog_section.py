@@ -10,7 +10,9 @@ from flask_wtf import CSRFProtect
 
 csrf = CSRFProtect(app)
 
-current_app.config["blog_id"] = []
+# current_app.config["blog_id"] = []
+
+BLOG_LIST_ID = []
 
 
 
@@ -69,9 +71,11 @@ def one_blog(blog_id, blog_title):
         return redirect(url_for("home"))
     
     
-    print(current_app.config)
+    #     print(current_app.config)
+
+    #     current_app.config["blog_id"].append(blog.id)
     
-    current_app.config["blog_id"].append(blog.id)
+    BLOG_LIST_ID.append(blog.id)
     
     if current_user.is_anonymous:
         
@@ -124,9 +128,14 @@ def one_blog(blog_id, blog_title):
                            blog_author_edit = blog_author_edit)
                            
 
+    
+    
+
+    
+    
           
 
-@app_comm.route("/comment_data", methods = ["GET", "POST"])
+@app_blog.route("/comment_data", methods = ["GET", "POST"])
 def comment_data():
     
     blog_id = BLOG_LIST_ID[-1]
