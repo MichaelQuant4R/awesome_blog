@@ -3,6 +3,16 @@
     
     list-style:circle !important;
 }
+
+
+#footer-list > li{
+    
+    
+    list-style:none !important;
+    
+    
+    
+}
 /* Add a gray background color with some padding */
 body {
   
