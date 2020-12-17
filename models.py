@@ -33,8 +33,8 @@ mail_settings = {
     
     "MAIL_SERVER": "smtp.gmail.com",
     "MAIL_PORT": 587,
-    "MAIL_USE_TLS": True,
-    "MAIL_USER_SSL": False,
+    "MAIL_USE_TLS": False,
+    "MAIL_USER_SSL": True,
     "MAIL_USERNAME": "dummyemail2019test1@gmail.com",
     "MAIL_PASSWORD": "123dummy123",
 }
