@@ -167,7 +167,7 @@ for(var i =0; i < comm.length; i++){
         + "<span id='comment-text-" + commentID + "' class='comment-text'>" + comment + "</span>"
         + "<div class='comment-interact' id='comment-interact-" + commentID + "'>"
     
-        + "<button class='reply-button' onclick='ToggleReplyForm(this)' id='toggle-comment-button-" + commentID + "'> reply</button><br>"
+        + "<button class='reply-button' onclick='ToggleReplyForm(this)' id='toggle-comment-button-" + commentID + "' title='add a reply to the conversation...'> reply</button><br>"
     
     
     + "</div>"
@@ -294,7 +294,7 @@ for(var i =0; i < comm.length; i++){
                     
                 + reply + "</span><br>"
                 + "<button class='reply-button' onclick='ToggleReplyForm(this)' id='toggle-reply-button-" 
-                    + replyID + "-" + commentID + "'> reply</button>"
+                    + replyID + "-" + commentID + "' title='add a reply to the conversation...'> reply</button>"
                 
                 + "<form method = 'POST' class='reply-form' id='form-reply-" +  replyID + "-" + commentID + "'>"
 
