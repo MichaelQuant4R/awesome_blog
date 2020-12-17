@@ -17,6 +17,15 @@
 }
 
 
+.reply-info > .user-image{
+    
+    
+    width:30px;
+    height:30px;
+    
+    
+}
+
 
 
 #blog-title{
@@ -87,7 +96,7 @@ img{
     }
     
 .timestamp-reply{
-    color:white;
+    color:black;
    float:right;
     font-size:12px;
     }

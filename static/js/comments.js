@@ -747,14 +747,31 @@ function getReplyData(check, notifyUserID, replyIdAbove = null){
         var replyID = rep["id"];
         var userName = rep["username"];
         
+        console.log("READ DATETIME", timeStamp);
+        
         var newName = userName[0].toUpperCase() + userName.slice(1,);
         var image = rep["image"];
         
         
         var commentBreak = document.getElementById("comment-break-" + commentID);
         
-        var interact = "";
-
+                                    
+        var interact = "<span class='interact-tooltip'>"+
+                
+                "<button onclick='EditText(this)' class='edit-text' id='edit-reply-" 
+                 +
+                replyID + "-" + commentID + "-" + userID
+                +"'>Edit</button><br><br>"
+            
+                + "<button onclick='DeleteText(this)' class='delete-text' id='delete-reply-" 
+                 +replyID + "-" + commentID + "-" + userID
+                
+                +"'>Delete</button>"
+            
+            
+            
+            +"</span>"
+           
         
         
         //         REPLY NOTIFICATION
@@ -771,7 +788,8 @@ function getReplyData(check, notifyUserID, replyIdAbove = null){
 
         + "<span class='timestamp-container-reply'><span class='timestamp-reply'>" + timeStamp + "</span>"
 
-        + "<div class='interactive-box'>"
+        + "<div class='interact-dots'>"
+        + "..."
 
         +interact
 

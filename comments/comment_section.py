@@ -208,7 +208,7 @@ def send_reply():
     user = User.query.filter_by(id = reply.user_id).first()
     
     reply_list.append({"reply": reply.reply,
-                       "timestamp": reply.timestamp,
+                       "timestamp": read_datetime(reply.timestamp),
                        "comment_id": reply.comment_id,
                        "user_id": reply.user_id,
                        "id": reply.id,
