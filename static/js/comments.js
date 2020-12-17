@@ -727,7 +727,7 @@ function DeleteError(){
     
 
     
-function getReplyData(check, notifyUserID){
+function getReplyData(check, notifyUserID, replyIdAbove = null){
     
     
     
@@ -747,18 +747,13 @@ function getReplyData(check, notifyUserID){
         var replyID = rep["id"];
         var userName = rep["username"];
         
-        var newName = userName[0] + userName.slice(1,);
+        var newName = userName[0].toUpperCase() + userName.slice(1,);
         var image = rep["image"];
         
         
         var commentBreak = document.getElementById("comment-break-" + commentID);
         
-//         var replyDiv = document.createElement("DIV");
-        
-//         replyDiv.className = "reply-list";
-//         replyDiv.id = "full-reply-" + replyID;
-
-       var interact = "";
+        var interact = "";
 
         
         
@@ -803,11 +798,7 @@ function getReplyData(check, notifyUserID){
         + "<input class='submit-textarea' type='button' onclick='ReplyButton(this)' id='submit-reply-" + replyID + "-"
             + commentID + "-" + userID + "' value='add reply'>"
 
-
         + "</form>"
-
-
-
 
         + "</div><br>";
 
@@ -887,6 +878,8 @@ function ReplyButton(e){
     
     var notifyUserID;
     
+    var replyIdAbove;
+    
     if(check == "comment"){
         
         console.log("This is a reply to a comment!");
@@ -914,7 +907,7 @@ function ReplyButton(e){
         
         var text = document.getElementById("textarea-reply-" + replyID + "-" + ID);
         var newText = text.value;
-        //replyIdAbove = replyID;
+        replyIdAbove = replyID;
         
         
         
@@ -948,14 +941,14 @@ function ReplyButton(e){
 
                 
                 
-            getReplyData(check, notifyUserID);
+            getReplyData(check, notifyUserID, replyIdAbove);
                 
                 
                 
             }).fail(function(){
                 
                 
-            getReplyData(check, notifyUserID);
+            getReplyData(check, notifyUserID, replyIdAbove);
 
             });
         
