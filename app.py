@@ -454,7 +454,7 @@ def send_reset_password_email(email, token):
         <br>
 
 
-        <div><a href='http://127.0.0.1:5000/reset_password/""" + token + """'> Click here to reset password</a></div>
+        <div><a href='https://mikes-awesome-blog.herokuapp.com/reset_password/""" + token + """'> Click here to reset password</a></div>
 
         </body>
         </html>"""

@@ -17,15 +17,6 @@
 }
 
 
-.reply-info > .user-image{
-    
-    
-    width:30px;
-    height:30px;
-    
-    
-}
-
 
 
 #blog-title{
@@ -45,6 +36,55 @@
 
 
 
+.reply-button{
+    
+    
+    cursor:pointer;
+    color:white;
+    background-color:#777;
+    font-weight:bold;
+    border:none;
+    padding:3px;
+    border-radius:2px;
+    transition:0.3s ease-out;
+    -o-transition:0.3s ease-out;
+    -ms-transition:0.3s ease-out;
+    -moz-transition:0.3s ease-out;
+    -webkit-transition:0.3s ease-out;
+    
+    
+}
+
+.reply-button:hover{
+    
+    background-color:SeaGreen;
+    transition:0.3s ease-in;
+    -o-transition:0.3s ease-in;
+    -ms-transition:0.3s ease-in;
+    -moz-transition:0.3s ease-in;
+    -webkit-transition:0.3s ease-in;
+    
+    animation:bounceReply  2s linear 0.3s 3 alternate;
+/*         name duration timing-function delay iteration-count direction */
+/*           animation: myfirst 5s linear 2s infinite alternate; */
+    
+    
+}
+
+
+@keyframes bounceReply{
+    
+    from{
+        
+        transform:translate(20deg);
+    }
+    to{
+    
+    transform:translate(-20deg);
+    
+    }
+
+}
 
 
 
@@ -67,7 +107,7 @@ img{
 
 .comment-text, .reply-text{
     
-    font-size:18px;
+    font-size:15px;
     
     
 }
@@ -80,13 +120,44 @@ img{
     position:relative;
     left:30%;
     }
+
+
+.commenter-info > .username{
+    color:DodgerBlue;
+    font-weight:bold;
+    font-style:italic;
+    font-size:17px;
+    
+    }
     
     
-.user-image{
+.reply-info > .username{
+    color:DodgerBlue;
+    font-weight:bold;
+    font-style:italic;
+    font-size:15px;
+    
+    }
+    
+    
+    
+
+.reply-info > .user-image{
+    width:30px;
+    height:30px;
+    border:2px solid SkyBlue;
+    border-radius:50%;
+    
+}
+
+
+.comment-info > .user-image{
 /*     border-radius:50%; */
     height:50px;
     width:50px;
-    border:2px solid white;
+    border:2px solid SkyBlue;
+    border-radius:50%;
+    
     }
     
 .timestamp-comment{
@@ -94,7 +165,8 @@ img{
    float:right;
     font-size:12px;
     }
-    
+
+
 .timestamp-reply{
     color:black;
    float:right;
@@ -108,7 +180,9 @@ img{
     border-radius:5px;
     max-width:40%;
     overflow-y:hidden;
-    font-size:20px;
+/*     font-size:20px; */
+    padding:5px;
+    background-color:rgba(240, 240, 230, 1.0);
     
     }
     
@@ -119,7 +193,7 @@ img{
     max-width:95%;
     overflow-x:hidden;
     color:black;
-    font-size:20px;
+/*     font-size:20px; */
     position:relative;
     left:5%;
     overflow-y:hidden;
@@ -158,14 +232,10 @@ img{
     color:white;
     }
     
-.username{
-    color:black;
-    }
-    
-    
+
 #toggle-comments{
-    color:lightgray;
-    font-size:14px;
+    color:gray;
+    font-size:15px;
     font-weight:bold;
     cursor:pointer;
     }
@@ -216,16 +286,19 @@ img{
     
     
     
-
+.submit-textarea{
+    min-width:40%;
+}
     
 .submit-textarea, .cancel-edit{
     
-    border-radius:3px;
-    border:1px solid DodgerBlue;
-    font-size:15px;
-    cursor:pointer;
-     transition:0.3s ease-in;
-    -webkit-transition:0.3s ease-in;
+    border-radius:3px !important;
+    border:1px solid DodgerBlue !important;
+    font-size:15px !important;
+   
+    cursor:pointer !important;
+     transition:0.3s ease-in !important;
+    -webkit-transition:0.3s ease-in !important;
     
     
     }

@@ -179,7 +179,7 @@ for(var i =0; i < comm.length; i++){
         + "<input type='hidden' name='csrf_token' value='" + token + "'>"
         + "<textarea class='textarea-comment' placeholder='add a reply to the conversation...' id='textarea-comment-" + commentID + "'></textarea><br>"
         
-        + "<input class='submit-textarea' type='button' onclick='ReplyButton(this)' id='submit-comment-" + commentID + "-" + userID + "' value='add reply'>"
+        + "<input class='submit-textarea' type='button' onclick='ReplyButton(this)' id='submit-comment-" + commentID + "-" + userID + "' value='add reply' title='add to the conversation...'>"
         
         
         + "</form>"
@@ -303,7 +303,7 @@ for(var i =0; i < comm.length; i++){
                 + replyID + "-" + commentID + "'></textarea><br>"
 
                 + "<input class='submit-textarea' type='button' onclick='ReplyButton(this)' id='submit-reply-" + replyID + "-"
-                    + commentID + "-" + userID + "' value='add reply'>"
+                    + commentID + "-" + userID + "' value='add reply' title='add to the conversation...'>"
 
 
                 + "</form>"

@@ -53,6 +53,10 @@ def one_blog(blog_id, blog_title):
     
     blog = Blog.query.filter_by(id = blog_id).first()
     
+    blogs = Blog.query.all()
+    
+    
+    
     visitor = True
     blog_author_edit = False
     
@@ -143,7 +147,8 @@ def one_blog(blog_id, blog_title):
                            current_user_id = current_user_id,
                            visitor = visitor,
                            blog_author_edit = blog_author_edit,
-                           comment_list = comment_list)
+                           comment_list = comment_list,
+                           blogs = blogs)
                            
 
 
