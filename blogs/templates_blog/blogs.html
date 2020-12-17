@@ -71,9 +71,9 @@
     }
     
     
-#blog-default{
+.blog-default{
     
-    min-width:20%;
+    width:40%;
     height:100px;
     
     }
@@ -168,7 +168,7 @@
     <span class="blog-title">{{blog.title}}</span>
     
         <br>
-    <img  id="blog-default" src="{{url_for('static',filename='images/blog-default.jpg')}}"><br>
+    <img  class="blog-default" src="{{url_for('static',filename='images/blog-default.jpg')}}"><br>
     </a>
  
     <span class="blog-timestamp">Posted: {{blog.timestamp|read_datetime}}</span><br>
