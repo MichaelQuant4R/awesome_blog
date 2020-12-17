@@ -160,7 +160,7 @@ def login():
                 
                             
                 print("This user does not exist!!")
-                flash("You're already registered with this email", "warning")
+                flash("Incorrect email and/or password", "danger")
                 return render_template("login.html", title = "login", 
                            form = form)
 
@@ -168,7 +168,7 @@ def login():
         else:
             
             print("This user does not exist!!")
-            flash("This user does not exist", "danger")
+            flash("Incorrect email and/or password", "danger")
             return render_template("login.html", title = "login", 
                            form = form)
 

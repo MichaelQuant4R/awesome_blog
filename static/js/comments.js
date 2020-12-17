@@ -753,8 +753,10 @@ function getReplyData(check, notifyUserID){
         
         var commentBreak = document.getElementById("comment-break-" + commentID);
         
-        replyDiv.className = "reply-list";
-        replyDiv.id = "full-reply-" + replyID;
+//         var replyDiv = document.createElement("DIV");
+        
+//         replyDiv.className = "reply-list";
+//         replyDiv.id = "full-reply-" + replyID;
 
        var interact = "";
 
