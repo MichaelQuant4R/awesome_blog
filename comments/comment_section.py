@@ -245,6 +245,14 @@ def delete_text():
             .filter(Comment.user_id == current_user.id).first()
             
             
+            notify_comment = Notification.query.filter_by(text_type = "comment").filter_by(text_id = comment.id).first()
+            
+            if notify_comment is not None:
+                
+                db.session.delete(notify_comment)
+                db.session.commit()
+            
+            
             if comment is not None:
                 
                 
@@ -255,7 +263,14 @@ def delete_text():
                     
                     for i in range(len(replies)):
                         
-                        
+
+                        notify_reply = Notification.query.filter_by(text_type = "reply").filter_by(text_id = replies[i].id).first()
+
+                        if notify_reply is not None:
+
+                            db.session.delete(notify_reply)
+                            db.session.commit()
+            
                         
                         db.session.delete(replies[i])
                         db.session.commit()
@@ -273,6 +288,14 @@ def delete_text():
             
             if reply is not None:
                 
+                
+                notify_reply = Notification.query.filter_by(text_type = "reply").filter_by(text_id = replies[i].id).first()
+
+                if notify_reply is not None:
+
+                    db.session.delete(notify_reply)
+                    db.session.commit()
+
                 
                 db.session.delete(reply)
                 db.session.commit()

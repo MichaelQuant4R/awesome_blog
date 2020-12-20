@@ -16,10 +16,19 @@ from config import allowed_extensions, max_file_size, header
 import sys
 from admin_section import admin
 
-
 app.register_blueprint(app_blog)
 app.register_blueprint(app_comm)
 app.register_blueprint(app_bell)
+
+# app.config.update(
+#     SESSION_COOKIE_SECURE=True,
+#     SESSION_COOKIE_HTTPONLY=True,
+#     SESSION_COOKIE_SAMESITE='Lax',
+# )
+
+
+
+
 
 @app.before_first_request
 def before_first_request_func():
@@ -27,6 +36,7 @@ def before_first_request_func():
 
     session["blog_id"] = []
     
+
 
 @app.context_processor
 def inject_stage_and_region():
@@ -608,4 +618,4 @@ def test_layout():
 
 
 if __name__ == "__main__":
-    app.run(debug = False)
+    app.run(debug = False, threaded=True)

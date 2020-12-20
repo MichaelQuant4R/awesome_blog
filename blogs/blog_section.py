@@ -53,7 +53,7 @@ def one_blog(blog_id, blog_title):
     
     blog = Blog.query.filter_by(id = blog_id).first()
     
-    blogs = Blog.query.all()
+    blogs = Blog.query.filter(Blog.id != blog_id).all()
     
     
     

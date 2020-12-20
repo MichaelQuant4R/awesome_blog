@@ -563,7 +563,7 @@ function NewComment(){
         + "<a class='commenter-info' href='/profile/" + userName + "/"
         + userID + "'><span class='username'>" + newName + "</span></a><br>"
         
-        + "<span id='comment-text-" + commentID + "'>" + comment + "</span>"
+        + "<span id='comment-text-" + commentID + "' class='comment-text'>" + comment + "</span>"
         + "<div class='comment-interact' id='comment-interact-" + commentID + "'>"
     
         + "<button class='reply-button' onclick='ToggleReplyForm(this)' id='toggle-comment-button-" + commentID + "'> reply</button><br>"
@@ -801,7 +801,7 @@ function getReplyData(check, notifyUserID, replyIdAbove = null){
         + "<a class='reply-info' href='/profile/" + userName + "/"
         + userID + "'><span class='username'>" + newName + "</span></a><br>"
 
-        + "<span id='reply-text-" + "-" + replyID + "-" +  commentID + "'>" 
+        + "<span id='reply-text-" + "-" + replyID + "-" +  commentID + "' class='reply-text'>" 
 
         + reply + "</span><br>"
         + "<button class='reply-button' onclick='ToggleReplyForm(this)' id='toggle-reply-button-" 
